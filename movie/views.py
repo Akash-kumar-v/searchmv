@@ -54,14 +54,7 @@ def home_view(request):
             mv.rating=ratings
             mv.save()
 
-    #  context={
-    #     "title":title,
-    #     "summary":summary,
-    #     "director":director,
-    #     "writer":writer,
-    #     "stars":stars,
-    #     "ratings":rating
-    #  }
+
         mv_data = Movie.objects.filter(title=title).values()  # or simply .values() to get all fields
         data_list = list(mv_data)  # important: convert the QuerySet to a list object
         return JsonResponse(data_list, safe=False)
